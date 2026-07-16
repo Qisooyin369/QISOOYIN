@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qisada - QISOOYIN</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --primary-color: #2ecc71;
+            --header-bg: #2c3e50;
+            --header-text: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #f4f7f6;
+            --card-bg: #2d2d2d;
+            --primary-color: #2ecc71;
+            --header-bg: #111111;
+            --header-text: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .back-btn, .dark-mode-btn {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover, .dark-mode-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .qiso-full-card {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .qiso-full-card h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 28px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .qiso-content {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-top: 20px;
+            white-space: pre-line; /* Tani waxay ilaalisaa aayadooyinka iyo hannaanka qoraalka */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-btn">⬅ Dib u laabo</a>
+        <h1>📖 QISOOYIN</h1>
+        <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </header>
+
+    <div class="container">
+        <div class="qiso-full-card">
+            <h2 id="qisoTitle">Soo raraya...</h2>
+            <div class="qiso-content" id="qisoBody">
+                Fadlan sug, qisada waa la soo rarayaa...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Qisooyinka kaydsan
+        const database = {
+            "samirka-iyo-guusha": {
+                title: "Samirka iyo Guusha",
+                content: "Waqti hore, waxaa jiray nin dhalinyaro ah oo rabay inuu hanti dhalo laakiin dhibaatooyin badan ayaa ka hor yimid. Maalin kasta wuxuu la kulmi jiray guuldarrooyin dhowr ah. \n\nMaalin maalmaha ka mid ah wuxuu u tagay oday waayeel ah oo caqli badan si uu u weydiiyo sirta guusha. Odaygii wuxuu ku yiri: 'Sirta guushu waa inaad samirto, markaad dhaddisana aad mar kale istaagto.' \n\nNinkii dhalinyarada ahaa wuxuu qaatay taladii odayga. Wuxuu bilaabay ganacsi cusub isagoo samirka ka dhigtay hubkiisa koobaad. Sanado ka dib, wuxuu noqday mid ka mid ah dadka ugu guusha iyo hantida badan magaalada."
+            },
+            "dhabada-toosan": {
+                title: "Dhabada Toosan",
+                content: "Daacadnimadu waa dhabada kaliya ee qofka u horseedda xasillooni maskaxeed iyo guul waarta. \n\nQisadan waxay ku saabsan tahay wiil yar oo lagu magacaabi jiray Cali, kaas oo helay boorsadii ay ku jireen lacagaha ugu muhiimsanaa ee ganacsade weyn oo magaalada joogay. Cali inkastoo uu sabool ahaa, haddana wuxuu go'aansaday inuu boorsada u celiyo ninkii lahaa isagoo aan waxba ka taaban. \n\nGanacsadihii markuu arkay daacadnimada Cali, wuxuu u damaanad qaaday waxbarashadiisa oo dhan, markii uu weynaadayna wuxuu ka dhigtay maareeyaha guud ee shirkadiisa."
+            }
+        };
+
+        // Sida loogu soo saaro qisada saxda ah iyadoo loo eegayo Link-ga
+        const urlParams = new URLSearchParams(window.location.search);
+        const qisoId = urlParams.get('id');
+
+        if (qisoId && database[qisoId]) {
+            document.getElementById('qisoTitle').innerText = database[qisoId].title;
+            document.getElementById('qisoBody').innerText = database[qisoId].content;
+            document.title = database[qisoId].title + " - QISOOYIN";
+        } else {
+            document.getElementById('qisoTitle').innerText = "Qisada lama helin!";
+            document.getElementById('qisoBody').innerText = "Waan ka xunnahay, qisadan laguma hayo diiwaanka.";
+        }
+
+        // Dark Mode
+        function toggleDarkMode() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                document.querySelector('.dark-mode-btn').innerText = "🌙 Dark Mode";
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.querySelector('.dark-mode-btn').innerText = "☀️ Light Mode";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
