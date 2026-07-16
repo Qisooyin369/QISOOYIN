@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QISOOYIN - Dunida Qisooyinka Casriga ah</title>
+    <style>
+        /* CSS iyo Naqshadda Bogga */
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --primary-color: #2ecc71;
+            --header-bg: #2c3e50;
+            --header-text: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #f4f7f6;
+            --card-bg: #2d2d2d;
+            --primary-color: #2ecc71;
+            --header-bg: #111111;
+            --header-text: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .dark-mode-btn {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .dark-mode-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Sanduuqa Raadinta */
+        .search-container {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        /* Qaybta Qisooyinka (Cards) */
+        .qiso-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .qiso-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .qiso-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .qiso-card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .qiso-card p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .read-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .fav-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .fav-btn.active {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>📖 QISOOYIN</h1>
+        <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </header>
+
+    <div class="container">
+        <!-- Sanduuqa Raadinta -->
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Raadi qisooyin dhiirigelin ah..." onkeyup="searchStories()">
+        </div>
+
+        <!-- Liiska Qisooyinka -->
+        <div class="qiso-grid" id="qisoGrid">
+            
+            <!-- Qisada 1aad -->
+            <div class="qiso-card" data-title=" Samirka iyo Guusha">
+                <button class="fav-btn" onclick="toggleFav(this)">♥</button>
+                <h3>Samirka iyo Guusha</h3>
+                <p>Kani waa bilowga qiso dhiirigelin leh oo ka hadlaysa muhiimadda samirka u leeyahay nolosha aadanaha...</p>
+                <a href="#" class="read-btn">Akhriso Qisada</a>
+            </div>
+
+            <!-- Qisada 2aad -->
+            <div class="qiso-card" data-title="Dhabada Toosan">
+                <button class="fav-btn" onclick="toggleFav(this)">♥</button>
+                <h3>Dhabada Toosan</h3>
+                <p>Qisadan waxay ku tusineysaa sida daacadnimada iyo raadinta dhabada toosan ay qofka u gaarsiiso guul...</p>
+                <a href="#" class="read-btn">Akhriso Qisada</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Shaqa bixinta Dark Mode
+        function toggleDarkMode() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                document.querySelector('.dark-mode-btn').innerText = "🌙 Dark Mode";
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.querySelector('.dark-mode-btn').innerText = "☀️ Light Mode";
+            }
+        }
+
+        // Shaqa bixinta Raadinta (Search)
+        function searchStories() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.getElementsByClassName('qiso-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.style.display = "none";
+                }
+            }
+        }
+
+        // Favourites (Ku darista kuwa aad jeceshahay)
+        function toggleFav(btn) {
+            btn.classList.toggle('active');
+            if(btn.classList.contains('active')) {
+                alert("Qisadan waxaa lagu daray Favorites-kaaga!");
+            } else {
+                alert("Qisadan waa laga saaray Favorites-kaaga.");
+            }
+        }
+    </script>
+
+</body>
+</html>
