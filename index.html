@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="so">
 <head>
@@ -138,10 +139,11 @@
             font-size: 20px;
             cursor: pointer;
             color: #ccc;
+            transition: color 0.2s;
         }
 
         .fav-btn.active {
-            color: red;
+            color: #e74c3c; /* Midab casaan diiran ah */
         }
     </style>
 </head>
@@ -162,16 +164,16 @@
         <div class="qiso-grid" id="qisoGrid">
             
             <!-- Qisada 1aad (Samirka iyo Guusha) -->
-            <div class="qiso-card" data-title="Samirka iyo Guusha">
-                <button class="fav-btn" onclick="toggleFav(this)">♥</button>
+            <div class="qiso-card" data-title="Samirka iyo Guusha" data-id="samirka-iyo-guusha">
+                <button class="fav-btn" onclick="toggleFav('samirka-iyo-guusha', this)">♥</button>
                 <h3>Samirka iyo Guusha</h3>
                 <p>Kani waa bilowga qiso dhiirigelin leh oo ka hadlaysa muhiimadda samirka u leeyahay nolosha aadanaha...</p>
                 <a href="qiso.html?id=samirka-iyo-guusha" class="read-btn">Akhriso Qisada</a>
             </div>
 
             <!-- Qisada 2aad (Dhabada Toosan) -->
-            <div class="qiso-card" data-title="Dhabada Toosan">
-                <button class="fav-btn" onclick="toggleFav(this)">♥</button>
+            <div class="qiso-card" data-title="Dhabada Toosan" data-id="dhabada-toosan">
+                <button class="fav-btn" onclick="toggleFav('dhabada-toosan', this)">♥</button>
                 <h3>Dhabada Toosan</h3>
                 <p>Qisadan waxay ku tusineysaa sida daacadnimada iyo raadinta dhabada toosan ay qofka u gaarsiiso guul...</p>
                 <a href="qiso.html?id=dhabada-toosan" class="read-btn">Akhriso Qisada</a>
@@ -181,15 +183,37 @@
     </div>
 
     <script>
+        // Marka boggu baxo (Load), soo rar dookha Dark Mode iyo Favourites-ka
+        document.addEventListener("DOMContentLoaded", () => {
+            // Dark Mode check
+            if (localStorage.getItem("theme") === "dark") {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.querySelector('.dark-mode-btn').innerText = "☀️ Light Mode";
+            }
+
+            // Favourites check
+            const favs = JSON.parse(localStorage.getItem("favorites")) || [];
+            const favButtons = document.querySelectorAll('.fav-btn');
+            
+            favButtons.forEach(btn => {
+                const qisoId = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
+                if (favs.includes(qisoId)) {
+                    btn.classList.add('active');
+                }
+            });
+        });
+
         // Shaqa bixinta Dark Mode
         function toggleDarkMode() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             if (currentTheme === 'dark') {
                 document.documentElement.removeAttribute('data-theme');
                 document.querySelector('.dark-mode-btn').innerText = "🌙 Dark Mode";
+                localStorage.setItem("theme", "light");
             } else {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 document.querySelector('.dark-mode-btn').innerText = "☀️ Light Mode";
+                localStorage.setItem("theme", "dark");
             }
         }
 
@@ -208,14 +232,22 @@
             }
         }
 
-        // Favourites (Ku darista kuwa aad jeceshahay)
-        function toggleFav(btn) {
-            btn.classList.toggle('active');
-            if(btn.classList.contains('active')) {
-                alert("Qisadan waxaa lagu daray Favorites-kaaga!");
+        // Favourites (Ku darista iyo Kaydinta)
+        function toggleFav(qisoId, btn) {
+            let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+            if (favs.includes(qisoId)) {
+                // Haddii ay markii horeba ku jirtay, ka saar
+                favs = favs.filter(id => id !== qisoId);
+                btn.classList.remove('active');
             } else {
-                alert("Qisadan waa laga saaray Favorites-kaaga.");
+                // Haddii kale, ku dar
+                favs.push(qisoId);
+                btn.classList.add('active');
             }
+
+            // Ku badbaadi browser-ka
+            localStorage.setItem("favorites", JSON.stringify(favs));
         }
     </script>
 
