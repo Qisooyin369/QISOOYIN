@@ -14,6 +14,8 @@
             --primary-color: #2ecc71;
             --header-bg: #2c3e50;
             --header-text: #ffffff;
+            --footer-bg: #2c3e50;
+            --footer-text: #bdc3c7;
         }
 
         [data-theme="dark"] {
@@ -23,6 +25,8 @@
             --primary-color: #2ecc71;
             --header-bg: #111111;
             --header-text: #ffffff;
+            --footer-bg: #111111;
+            --footer-text: #888888;
         }
 
         body {
@@ -31,13 +35,16 @@
             color: var(--text-color);
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
             transition: background 0.3s, color 0.3s;
         }
 
         header {
             background-color: var(--header-bg);
             color: var(--header-text);
-            padding: 20px;
+            padding: 25px 20px; /* Wax yar waa la weyneeyey */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -46,14 +53,14 @@
 
         header h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 32px; /* Cinwaanka weyn waa la weyneeyey (wuxuu ahaa 24px) */
         }
 
         .dark-mode-btn {
             background: none;
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 8px 16px;
+            padding: 10px 20px;
             cursor: pointer;
             border-radius: 20px;
             font-weight: bold;
@@ -69,21 +76,22 @@
             max-width: 1000px;
             margin: 30px auto;
             padding: 0 20px;
+            flex: 1; /* Tani waxay hubineysaa in footer-ku mar walba hoos joogo */
         }
 
         /* Sanduuqa Raadinta */
         .search-container {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             display: flex;
             gap: 10px;
         }
 
         .search-input {
             flex: 1;
-            padding: 12px;
+            padding: 15px;
             border: 2px solid #ccc;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px;
             outline: none;
             background-color: var(--card-bg);
             color: var(--text-color);
@@ -93,14 +101,14 @@
         .qiso-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .qiso-card {
             background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            overflow: hidden; /* Si sawirku geesaha ugu wareego */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: transform 0.2s;
             position: relative;
         }
@@ -109,20 +117,33 @@
             transform: translateY(-5px);
         }
 
+        /* Naqshadda Sawirka Qisada */
+        .qiso-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover; /* Si uu sawirku si fiican ugu fariisto */
+        }
+
+        .qiso-card-content {
+            padding: 20px;
+        }
+
         .qiso-card h3 {
             margin-top: 0;
+            margin-bottom: 10px;
             color: var(--primary-color);
+            font-size: 24px; /* Waa la weyneeyey cinwaanka qisada (wuxuu ahaa 18-20px) */
         }
 
         .qiso-card p {
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.6;
         }
 
         .read-btn {
             display: inline-block;
             margin-top: 15px;
-            padding: 8px 15px;
+            padding: 10px 20px;
             background-color: var(--primary-color);
             color: white;
             text-decoration: none;
@@ -132,18 +153,37 @@
 
         .fav-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.8); /* Background cad oo hufan si uu sawirka dushiisa uga muuqdo */
             border: none;
-            font-size: 20px;
+            font-size: 22px;
             cursor: pointer;
-            color: #ccc;
-            transition: color 0.2s;
+            color: #bbb;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .fav-btn.active {
             color: #e74c3c;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Naqshadda Footer-ka */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            text-align: center;
+            padding: 20px;
+            font-size: 16px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -166,29 +206,43 @@
             <!-- Qisada 1aad (Samirka iyo Guusha) -->
             <div class="qiso-card" data-title="Samirka iyo Guusha" data-id="samirka-iyo-guusha">
                 <button class="fav-btn" onclick="toggleFav('samirka-iyo-guusha', this)">♥</button>
-                <h3>Samirka iyo Guusha</h3>
-                <p>Kani waa bilowga qiso dhiirigelin leh oo ka hadlaysa muhiimadda samirka u leeyahay nolosha aadanaha...</p>
-                <a href="qiso.html?id=samirka-iyo-guusha" class="read-btn">Akhriso Qisada</a>
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Samirka iyo Guusha" class="qiso-img">
+                <div class="qiso-card-content">
+                    <h3>Samirka iyo Guusha</h3>
+                    <p>Kani waa bilowga qiso dhiirigelin leh oo ka hadlaysa muhiimadda samirka u leeyahay nolosha aadanaha...</p>
+                    <a href="qiso.html?id=samirka-iyo-guusha" class="read-btn">Akhriso Qisada</a>
+                </div>
             </div>
 
             <!-- Qisada 2aad (Dhabada Toosan) -->
             <div class="qiso-card" data-title="Dhabada Toosan" data-id="dhabada-toosan">
                 <button class="fav-btn" onclick="toggleFav('dhabada-toosan', this)">♥</button>
-                <h3>Dhabada Toosan</h3>
-                <p>Qisadan waxay ku tusineysaa sida daacadnimada iyo raadinta dhabada toosan ay qofka u gaarsiiso guul...</p>
-                <a href="qiso.html?id=dhabada-toosan" class="read-btn">Akhriso Qisada</a>
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80" alt="Dhabada Toosan" class="qiso-img">
+                <div class="qiso-card-content">
+                    <h3>Dhabada Toosan</h3>
+                    <p>Qisadan waxay ku tusineysaa sida daacadnimada iyo raadinta dhabada toosan ay qofka u gaarsiiso guul...</p>
+                    <a href="qiso.html?id=dhabada-toosan" class="read-btn">Akhriso Qisada</a>
+                </div>
             </div>
 
             <!-- Qisada 3aad (Aamina iyo Riyadeeda) -->
             <div class="qiso-card" data-title="Aamina iyo Riyadeeda" data-id="aamina-iyo-riyadeeda">
                 <button class="fav-btn" onclick="toggleFav('aamina-iyo-riyadeeda', this)">♥</button>
-                <h3>Aamina iyo Riyadeeda</h3>
-                <p>Qisadani waxay ku saabsan tahay gabadh yar oo hami sare leh, taas oo ku guulaysatay inay dhib kasta ka gudubto...</p>
-                <a href="qiso.html?id=aamina-iyo-riyadeeda" class="read-btn">Akhriso Qisada</a>
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Aamina iyo Riyadeeda" class="qiso-img">
+                <div class="qiso-card-content">
+                    <h3>Aamina iyo Riyadeeda</h3>
+                    <p>Qisadani waxay ku saabsan tahay gabadh yar oo hami sare leh, taas oo ku guulaysatay inay dhib kasta ka gudubto...</p>
+                    <a href="qiso.html?id=aamina-iyo-riyadeeda" class="read-btn">Akhriso Qisada</a>
+                </div>
             </div>
 
         </div>
     </div>
+
+    <!-- FOOTER-KA CUSUB -->
+    <footer>
+        @2026 QISOOYIN - Xuquuqda wey dhowran tahay
+    </footer>
 
     <script>
         // Marka boggu baxo (Load)
