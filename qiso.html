@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="so">
 <head>
@@ -91,7 +89,7 @@
             font-size: 18px;
             line-height: 1.8;
             margin-top: 20px;
-            white-space: pre-line; /* Tani waxay ilaalisaa aayadooyinka iyo hannaanka qoraalka */
+            white-space: pre-line;
         }
     </style>
 </head>
@@ -113,7 +111,7 @@
     </div>
 
     <script>
-        // Qisooyinka kaydsan
+        // Qisooyinka kaydsan (Database)
         const database = {
             "samirka-iyo-guusha": {
                 title: "Samirka iyo Guusha",
@@ -121,11 +119,15 @@
             },
             "dhabada-toosan": {
                 title: "Dhabada Toosan",
-                content: "Daacadnimadu waa dhabada kaliya ee qofka u horseedda xasillooni maskaxeed iyo guul waarta. \n\nQisadan waxay ku saabsan tahay wiil yar oo lagu magacaabi jiray Cali, kaas oo helay boorsadii ay ku jireen lacagaha ugu muhiimsanaa ee ganacsade weyn oo magaalada joogay. Cali inkastoo uu sabool ahaa, haddana wuxuu go'aansaday inuu boorsada u celiyo ninkii lahaa isagoo aan waxba ka taaban. \n\nGanacsadihii markuu arkay daacadnimada Cali, wuxuu u damaanad qaaday waxbarashadiisa oo dhan, markii uu weynaadayna wuxuu ka dhigtay maareeyaha guud ee shirkadiisa."
+                content: "Daacadnimadu waa dhabada ka kaliya ee qofka u horseedda xasillooni maskaxeed iyo guul waarta. \n\nQisadan waxay ku saabsan tahay wiil yar oo lagu magacaabi jiray Cali, kaas oo helay boorsadii ay ku jireen lacagaha ugu muhiimsanaa ee ganacsade weyn oo magaalada joogay. Cali inkastoo uu sabool ahaa, haddana wuxuu go'aansaday inuu boorsada u celiyo ninkii lahaa isagoo aan waxba ka taaban. \n\nGanacsadihii markuu arkay daacadnimada Cali, wuxuu u damaanad qaaday waxbarashadiisa oo dhan, markii uu weynaadayna wuxuu ka dhigtay maareeyaha guud ee shirkadiisa."
+            },
+            "aamina-iyo-riyadeeda": {
+                title: "Aamina iyo Riyadeeda",
+                content: "Aamina waxay ahayd gabadh dhalinyaro ah oo ku nool miyiga, waxayna aad u jeclayd inay maalin maalmaha ka mid ah noqoto dhakhtarad daryeesha dadkeeda. \n\nIn kasta oo aysan deegaankeeda ka jirin dugsiyo sare iyo jaamacado, haddana taasi kama hakin riyadeeda. Waxay u guurtay magaalada si ay u sii wadato waxbarashada iyadoo la tacaalaysa dhibaatooyinka nolosha iyo duruufaha dhaqaale. \n\nSannado badan oo dadaal iyo dhabar-adayg ah ka dib, Aamina waxay ku guulaysatay inay dhammayso kulliyadda caafimaadka, maantana waa dhakhtarad caan ah oo dadkeeda u adeegta."
             }
         };
 
-        // Marka boggu baxo (Load), soo rar dookha Dark Mode iyo Qisada saxda ah
+        // Marka boggu baxo (Load)
         document.addEventListener("DOMContentLoaded", () => {
             // Dark Mode check
             if (localStorage.getItem("theme") === "dark") {
