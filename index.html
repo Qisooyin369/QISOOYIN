@@ -143,7 +143,7 @@
         }
 
         .fav-btn.active {
-            color: #e74c3c; /* Midab casaan diiran ah */
+            color: #e74c3c;
         }
     </style>
 </head>
@@ -179,11 +179,19 @@
                 <a href="qiso.html?id=dhabada-toosan" class="read-btn">Akhriso Qisada</a>
             </div>
 
+            <!-- Qisada 3aad (Aamina iyo Riyadeeda) -->
+            <div class="qiso-card" data-title="Aamina iyo Riyadeeda" data-id="aamina-iyo-riyadeeda">
+                <button class="fav-btn" onclick="toggleFav('aamina-iyo-riyadeeda', this)">♥</button>
+                <h3>Aamina iyo Riyadeeda</h3>
+                <p>Qisadani waxay ku saabsan tahay gabadh yar oo hami sare leh, taas oo ku guulaysatay inay dhib kasta ka gudubto...</p>
+                <a href="qiso.html?id=aamina-iyo-riyadeeda" class="read-btn">Akhriso Qisada</a>
+            </div>
+
         </div>
     </div>
 
     <script>
-        // Marka boggu baxo (Load), soo rar dookha Dark Mode iyo Favourites-ka
+        // Marka boggu baxo (Load)
         document.addEventListener("DOMContentLoaded", () => {
             // Dark Mode check
             if (localStorage.getItem("theme") === "dark") {
@@ -237,16 +245,13 @@
             let favs = JSON.parse(localStorage.getItem("favorites")) || [];
 
             if (favs.includes(qisoId)) {
-                // Haddii ay markii horeba ku jirtay, ka saar
                 favs = favs.filter(id => id !== qisoId);
                 btn.classList.remove('active');
             } else {
-                // Haddii kale, ku dar
                 favs.push(qisoId);
                 btn.classList.add('active');
             }
 
-            // Ku badbaadi browser-ka
             localStorage.setItem("favorites", JSON.stringify(favs));
         }
     </script>
