@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="so">
 <head>
@@ -12,6 +13,8 @@
             --primary-color: #2ecc71;
             --header-bg: #2c3e50;
             --header-text: #ffffff;
+            --footer-bg: #2c3e50;
+            --footer-text: #bdc3c7;
         }
 
         [data-theme="dark"] {
@@ -21,6 +24,8 @@
             --primary-color: #2ecc71;
             --header-bg: #111111;
             --header-text: #ffffff;
+            --footer-bg: #111111;
+            --footer-text: #888888;
         }
 
         body {
@@ -29,13 +34,16 @@
             color: var(--text-color);
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
             transition: background 0.3s, color 0.3s;
         }
 
         header {
             background-color: var(--header-bg);
             color: var(--header-text);
-            padding: 20px;
+            padding: 25px 20px; /* Waa la weyneeyey */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,14 +51,14 @@
 
         header h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 32px; /* Waa la weyneeyey */
         }
 
         .back-btn, .dark-mode-btn {
             background: none;
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 8px 16px;
+            padding: 10px 20px;
             cursor: pointer;
             border-radius: 20px;
             font-weight: bold;
@@ -68,28 +76,51 @@
             max-width: 800px;
             margin: 40px auto;
             padding: 0 20px;
+            flex: 1;
         }
 
         .qiso-full-card {
             background-color: var(--card-bg);
-            padding: 40px;
             border-radius: 12px;
+            overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Sawirka weyn ee gudaha qisada */
+        .qiso-banner-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .qiso-full-card-content {
+            padding: 40px;
         }
 
         .qiso-full-card h2 {
             color: var(--primary-color);
             margin-top: 0;
-            font-size: 28px;
+            font-size: 36px; /* Aad baa loo weyneeyey cinwaanka gudaha (wuxuu ahaa 28px) */
             border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
 
         .qiso-content {
-            font-size: 18px;
+            font-size: 19px; /* Qoraalka sheekada laftiisa wax yar baa la weyneeyey si uu indhaha u uroon yahay */
             line-height: 1.8;
             margin-top: 20px;
             white-space: pre-line;
+        }
+
+        /* Naqshadda Footer-ka */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            text-align: center;
+            padding: 20px;
+            font-size: 16px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -103,26 +134,39 @@
 
     <div class="container">
         <div class="qiso-full-card">
-            <h2 id="qisoTitle">Soo raraya...</h2>
-            <div class="qiso-content" id="qisoBody">
-                Fadlan sug, qisada waa la soo rarayaa...
+            <!-- Sawirka weyn ee sare ka soo muuqanaya -->
+            <img id="qisoBanner" src="" alt="Qiso Banner" class="qiso-banner-img" style="display: none;">
+            
+            <div class="qiso-full-card-content">
+                <h2 id="qisoTitle">Soo raraya...</h2>
+                <div class="qiso-content" id="qisoBody">
+                    Fadlan sug, qisada waa la soo rarayaa...
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- FOOTER-KA CUSUB -->
+    <footer>
+        @2026 QISOOYIN - Xuquuqda wey dhowran tahay
+    </footer>
+
     <script>
-        // Qisooyinka kaydsan (Database)
+        // Qisooyinka kaydsan (oo hadda wata sawirradii)
         const database = {
             "samirka-iyo-guusha": {
                 title: "Samirka iyo Guusha",
-                content: "Waqti hore, waxaa jiray nin dhalinyaro ah oo rabay inuu hanti dhalo laakiin dhibaatooyin badan ayaa ka hor yimid. Maalin kasta wuxuu la kulmi jiray guuldarrooyin dhowr ah. \n\nMaalin maalmaha ka mid ah wuxuu u tagay oday waayeel ah oo caqli badan si uu u weydiiyo sirta guusha. Odaygii wuxuu ku yiri: 'Sirta guushu waa inaad samirto, markaad dhaddisana aad mar kale istaagto.' \n\nNinkii dhalinyarada ahaa wuxuu qaatay taladii odayga. Wuxuu bilaabay ganacsi cusub isagoo samirka ka dhigtay hubkiisa koobaad. Sanado ka dib, wuxuu noqday mid ka mid ah dadka ugu guusha iyo hantida badan magaalada."
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+                content: "Waqti hore, waxaa jiray nin dhalinyaro ah oo rabay inuu hanti dhalo laakiin dhibaatooyin banyak ayaa ka hor yimid. Maalin kasta wuxuu la kulmi jiray guuldarrooyin dhowr ah. \n\nMaalin maalmaha ka mid ah wuxuu u tagay oday waayeel ah oo caqli badan si uu u weydiiyo sirta guusha. Odaygii wuxuu ku yiri: 'Sirta guushu waa inaad samirto, markaad dhaddisana aad mar kale istaagto.' \n\nNinkii dhalinyarada ahaa wuxuu qaatay taladii odayga. Wuxuu bilaabay ganacsi cusub isagoo samirka ka dhigtay hubkiisa koobaad. Sanado ka dib, wuxuu noqday mid ka mid ah dadka ugu guusha iyo hantida badan magaalada."
             },
             "dhabada-toosan": {
                 title: "Dhabada Toosan",
+                image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
                 content: "Daacadnimadu waa dhabada ka kaliya ee qofka u horseedda xasillooni maskaxeed iyo guul waarta. \n\nQisadan waxay ku saabsan tahay wiil yar oo lagu magacaabi jiray Cali, kaas oo helay boorsadii ay ku jireen lacagaha ugu muhiimsanaa ee ganacsade weyn oo magaalada joogay. Cali inkastoo uu sabool ahaa, haddana wuxuu go'aansaday inuu boorsada u celiyo ninkii lahaa isagoo aan waxba ka taaban. \n\nGanacsadihii markuu arkay daacadnimada Cali, wuxuu u damaanad qaaday waxbarashadiisa oo dhan, markii uu weynaadayna wuxuu ka dhigtay maareeyaha guud ee shirkadiisa."
             },
             "aamina-iyo-riyadeeda": {
                 title: "Aamina iyo Riyadeeda",
+                image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80",
                 content: "Aamina waxay ahayd gabadh dhalinyaro ah oo ku nool miyiga, waxayna aad u jeclayd inay maalin maalmaha ka mid ah noqoto dhakhtarad daryeesha dadkeeda. \n\nIn kasta oo aysan deegaankeeda ka jirin dugsiyo sare iyo jaamacado, haddana taasi kama hakin riyadeeda. Waxay u guurtay magaalada si ay u sii wadato waxbarashada iyadoo la tacaalaysa dhibaatooyinka nolosha iyo duruufaha dhaqaale. \n\nSannado badan oo dadaal iyo dhabar-adayg ah ka dib, Aamina waxay ku guulaysatay inay dhammayso kulliyadda caafimaadka, maantana waa dhakhtarad caan ah oo dadkeeda u adeegta."
             }
         };
@@ -146,6 +190,11 @@
                 document.getElementById('qisoTitle').innerText = database[qisoId].title;
                 document.getElementById('qisoBody').innerText = database[qisoId].content;
                 document.title = database[qisoId].title + " - QISOOYIN";
+                
+                // Soo rar sawirka oo muuji
+                const banner = document.getElementById('qisoBanner');
+                banner.src = database[qisoId].image;
+                banner.style.display = "block";
             } else {
                 document.getElementById('qisoTitle').innerText = "Qisada lama helin!";
                 document.getElementById('qisoBody').innerText = "Waan ka xunnahay, qisadan laguma hayo diiwaanka.";
