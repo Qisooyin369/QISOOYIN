@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QISOOYIN - Dunida Qisooyinka Casriga ah</title>
+    <title>Qisada - QISOOYIN</title>
     <style>
-        /* CSS iyo Naqshadda Bogga */
         :root {
             --bg-color: #f4f7f6;
             --text-color: #333;
@@ -44,19 +43,18 @@
         header {
             background-color: var(--header-bg);
             color: var(--header-text);
-            padding: 25px 20px; /* Wax yar waa la weyneeyey */
+            padding: 25px 20px; /* Waa la weyneeyey */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         header h1 {
             margin: 0;
-            font-size: 32px; /* Cinwaanka weyn waa la weyneeyey (wuxuu ahaa 24px) */
+            font-size: 32px; /* Waa la weyneeyey */
         }
 
-        .dark-mode-btn {
+        .back-btn, .dark-mode-btn {
             background: none;
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
@@ -64,115 +62,54 @@
             cursor: pointer;
             border-radius: 20px;
             font-weight: bold;
+            text-decoration: none;
+            font-size: 14px;
             transition: 0.3s;
         }
 
-        .dark-mode-btn:hover {
+        .back-btn:hover, .dark-mode-btn:hover {
             background-color: var(--primary-color);
             color: white;
         }
 
         .container {
-            max-width: 1000px;
-            margin: 30px auto;
+            max-width: 800px;
+            margin: 40px auto;
             padding: 0 20px;
-            flex: 1; /* Tani waxay hubineysaa in footer-ku mar walba hoos joogo */
-        }
-
-        /* Sanduuqa Raadinta */
-        .search-container {
-            margin-bottom: 35px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .search-input {
             flex: 1;
-            padding: 15px;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            font-size: 18px;
-            outline: none;
-            background-color: var(--card-bg);
-            color: var(--text-color);
         }
 
-        /* Qaybta Qisooyinka (Cards) */
-        .qiso-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .qiso-card {
+        .qiso-full-card {
             background-color: var(--card-bg);
             border-radius: 12px;
-            overflow: hidden; /* Si sawirku geesaha ugu wareego */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.2s;
-            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .qiso-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Naqshadda Sawirka Qisada */
-        .qiso-img {
+        /* Sawirka weyn ee gudaha qisada */
+        .qiso-banner-img {
             width: 100%;
-            height: 180px;
-            object-fit: cover; /* Si uu sawirku si fiican ugu fariisto */
+            height: 300px;
+            object-fit: cover;
         }
 
-        .qiso-card-content {
-            padding: 20px;
+        .qiso-full-card-content {
+            padding: 40px;
         }
 
-        .qiso-card h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
+        .qiso-full-card h2 {
             color: var(--primary-color);
-            font-size: 24px; /* Waa la weyneeyey cinwaanka qisada (wuxuu ahaa 18-20px) */
+            margin-top: 0;
+            font-size: 36px; /* Aad baa loo weyneeyey cinwaanka gudaha (wuxuu ahaa 28px) */
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
         }
 
-        .qiso-card p {
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .read-btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .fav-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.8); /* Background cad oo hufan si uu sawirka dushiisa uga muuqdo */
-            border: none;
-            font-size: 22px;
-            cursor: pointer;
-            color: #bbb;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .fav-btn.active {
-            color: #e74c3c;
-            background: rgba(255, 255, 255, 0.95);
+        .qiso-content {
+            font-size: 19px; /* Qoraalka sheekada laftiisa wax yar baa la weyneeyey si uu indhaha u uroon yahay */
+            line-height: 1.8;
+            margin-top: 20px;
+            white-space: pre-line;
         }
 
         /* Naqshadda Footer-ka */
@@ -190,52 +127,22 @@
 <body>
 
     <header>
+        <a href="index.html" class="back-btn">⬅ Dib u laabo</a>
         <h1>📖 QISOOYIN</h1>
         <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
     </header>
 
     <div class="container">
-        <!-- Sanduuqa Raadinta -->
-        <div class="search-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="Raadi qisooyin dhiirigelin ah..." onkeyup="searchStories()">
-        </div>
-
-        <!-- Liiska Qisooyinka -->
-        <div class="qiso-grid" id="qisoGrid">
+        <div class="qiso-full-card">
+            <!-- Sawirka weyn ee sare ka soo muuqanaya -->
+            <img id="qisoBanner" src="" alt="Qiso Banner" class="qiso-banner-img" style="display: none;">
             
-            <!-- Qisada 1aad (Samirka iyo Guusha) -->
-            <div class="qiso-card" data-title="Samirka iyo Guusha" data-id="samirka-iyo-guusha">
-                <button class="fav-btn" onclick="toggleFav('samirka-iyo-guusha', this)">♥</button>
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Samirka iyo Guusha" class="qiso-img">
-                <div class="qiso-card-content">
-                    <h3>Samirka iyo Guusha</h3>
-                    <p>Kani waa bilowga qiso dhiirigelin leh oo ka hadlaysa muhiimadda samirka u leeyahay nolosha aadanaha...</p>
-                    <a href="qiso.html?id=samirka-iyo-guusha" class="read-btn">Akhriso Qisada</a>
+            <div class="qiso-full-card-content">
+                <h2 id="qisoTitle">Soo raraya...</h2>
+                <div class="qiso-content" id="qisoBody">
+                    Fadlan sug, qisada waa la soo rarayaa...
                 </div>
             </div>
-
-            <!-- Qisada 2aad (Dhabada Toosan) -->
-            <div class="qiso-card" data-title="Dhabada Toosan" data-id="dhabada-toosan">
-                <button class="fav-btn" onclick="toggleFav('dhabada-toosan', this)">♥</button>
-                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80" alt="Dhabada Toosan" class="qiso-img">
-                <div class="qiso-card-content">
-                    <h3>Dhabada Toosan</h3>
-                    <p>Qisadan waxay ku tusineysaa sida daacadnimada iyo raadinta dhabada toosan ay qofka u gaarsiiso guul...</p>
-                    <a href="qiso.html?id=dhabada-toosan" class="read-btn">Akhriso Qisada</a>
-                </div>
-            </div>
-
-            <!-- Qisada 3aad (Aamina iyo Riyadeeda) -->
-            <div class="qiso-card" data-title="Aamina iyo Riyadeeda" data-id="aamina-iyo-riyadeeda">
-                <button class="fav-btn" onclick="toggleFav('aamina-iyo-riyadeeda', this)">♥</button>
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Aamina iyo Riyadeeda" class="qiso-img">
-                <div class="qiso-card-content">
-                    <h3>Aamina iyo Riyadeeda</h3>
-                    <p>Qisadani waxay ku saabsan tahay gabadh yar oo hami sare leh, taas oo ku guulaysatay inay dhib kasta ka gudubto...</p>
-                    <a href="qiso.html?id=aamina-iyo-riyadeeda" class="read-btn">Akhriso Qisada</a>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -245,27 +152,71 @@
     </footer>
 
     <script>
+        // Qisooyinka kaydsan (oo hadda wata sawirradii)
+        const database = {
+            "samirka-iyo-guusha": {
+                title: "Samirka iyo Guusha",
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+                content: "Waqti hore, waxaa jiray nin dhalinyaro ah oo rabay inuu hanti dhalo laakiin dhibaatooyin banyak ayaa ka hor yimid. Maalin kasta wuxuu la kulmi jiray guuldarrooyin dhowr ah. \n\nMaalin maalmaha ka mid ah wuxuu u tagay oday waayeel ah oo caqli bacon si uu u weydiiyo sirta guusha. Odaygii wuxuu ku yiri: 'Sirta guushu waa inaad samirto, markaad dhaddisana aad mar kale istaagto.' \n\nNinkii dhalinyarada ahaa wuxuu qaatay taladii odayga. Wuxuu bilaabay ganacsi cusub isagoo samirka ka dhigtay hubkiisa koobaad. Sanado ka dib, wuxuu noqday mid ka mid ah dadka ugu guusha iyo hantida badan magaalada."
+            },
+            "dhabada-toosan": {
+                title: "Dhabada Toosan",
+                image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+                content: "Daacadnimadu waa dhabada ka kaliya ee qofka u horseedda xasillooni maskaxeed iyo guul waarta. \n\nQisadan waxay ku saabsan tahay wiil yar oo lagu magacaabi jiray Cali, kaas oo helay boorsadii ay ku jireen lacagaha ugu muhiimsanaa ee ganacsade weyn oo magaalada joogay. Cali inkastoo uu sabool ahaa, haddana wuxuu go'aansaday inuu boorsada u celiyo ninkii lahaa isagoo aan waxba ka taaban. \n\nGanacsadihii markuu arkay daacadnimada Cali, wuxuu u damaanad qaaday waxbarashadiisa oo dhan, markii uu weynaadayna wuxuu ka dhigtay maareeyaha guud ee shirkadiisa."
+            },
+            "aamina-iyo-riyadeeda": {
+                title: "Aamina iyo Riyadeeda",
+                image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80",
+                content: "Aamina waxay ahayd gabadh dhalinyaro ah oo ku nool miyiga, waxayna aad u jeclayd inay maalin maalmaha ka mid ah noqoto dhakhtarad daryeesha dadkeeda. \n\nIn kasta oo aysan deegaankeeda ka jirin dugsiyo sare iyo jaamacado, haddana taasi kama hakin riyadeeda. Waxay u guurtay magaalada si ay u sii wadato waxbarashada iyadoo la tacaalaysa dhibaatooyinka nolosha iyo duruufaha dhaqaale. \n\nSannado badan oo dadaal iyo dhabar-adayg ah ka dib, Aamina waxay ku guulaysatay inay dhammayso kulliyadda caafimaadka, maantana waa dhakhtarad caan ah oo dadkeeda u adeegta."
+            },
+            "nuurkii-indhaheyga": {
+                title: "Nuurkii Indhaheyga (Aragtida Gabadha)",
+                image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80",
+                content: "Sumaya waxay ahayd gabadh aad u jecel sawirista iyo fanka, laakiin dhibaato dhinaca aragga ah ayaa ku dhalatay oo ka hor-istaagi jirtay inay adduunka si cad u aragto. Maalin maalmaha ka mid ah, iyadoo joogta goob lagu soo bandhigo farshaxanka, ayay is barteen Nuur oo ahaa wiil dhallinyaro ah oo qoraa ah. Nuur ma noqon kaliya saaxiib, laakiin wuxuu noqday qofka u sharraxa quruxda dunida ee aysan indhaheedu qaban karin. \n\n\"Wuxuu ii ahaa indho aan wax ku arko, wax walba oo uu ii sharraxana waxay qalbigeyga ku abuuri jireen sawir ka qurux badan midka ay dadka kale arkaan,\" ayay tiri Sumaya maalin ay xusuusanaysay bilowgii jaceylkooda. \n\nJaceylkoodu wuxuu ku dhisnaa kalsooni iyo dareen qoto dheer. Markii dambe oo ay Sumaya heshay caawimaad caafimaad oo indhaheeda wax looga qabtay, qofkii ugu horreeyey ee ay rabtay inay aragto wuxuu ahaa Nuur—iyadoo ogaatay in nuurka runta ah uu ahaa naxariista ku jirtay wadnihiisa."
+            },
+            "qoraalkii-ugu-dambeeyey": {
+                title: "Qoraalkii Ugu Dambeeyey (Aragtida Wiilka)",
+                image: "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=800&q=80",
+                content: "Khaalid wuxuu ahaa wiil dabeecad deggan oo ka shaqeeya maktabad weyn. Maalin kasta, wuxuu arki jiray gabadh magaceeda la yiraahdo Leyla oo timaada maktabada si ay wax u akhrisato. Khaalid wuxuu ahaa qof xishood badan oo aan ku dhiiran karin inuu la hadlo, laakiin wuxuu go'aansaday inuu dareenkiisa ugu sheego qaab ka duwan kuwii caadiga ahaa. Wuxuu bilaabay inuu buugaagta ay akhrisato dhex dhigo waraaqo yaryar oo ay ku qoran yihiin erayo dhiirigelin iyo jaceyl isugu jira. \n\nHabeenkii uu go'aansaday inuu u sheego inuu isagu waraaqaha u qori jiray, wuxuu ku yiri:\n'Buug walba oo aan kuu xushay wuxuu ahaa cutub ka mid ah jaceylka aan kuu qabo, xaraf walba oo ku qornaana wuxuu ahaa codka wadnaheyga.' \n\nLeyla weji furnaan iyo farxad ayay ku qaabishay, waxayna u sheegtay inay horay u ogaatay inuu isagu yahay qofka qoraalka u reebi jiray, balse ay sugeysey goorta uu geesinimada la imaan doono."
+            },
+            "jidka-tareenka-iyo-kulankii-qaddarka": {
+                title: "Jidka Tareenka iyo Kulankii Qaddarka (Wada Jir)",
+                image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=800&q=80",
+                content: "Cumar iyo Fardowsa waxay ahaayeen laba qof oo maalin kasta ku kulmi jiray saldhigga tareenka xilliga subaxdii marka loo socdo shaqada. Waxay isku weydaarsan jireen kaliya dhoola-caddayn iyo salaan kooban muddo ku dhow sannad, laakiin midkoodna kuma dhiiran jirin inuu tallaabo kale qaado. Maalin maalmaha ka mid ah, tareenkii ayaa cilad ku timid, waxaana lagu khasbay inay bas wada raacaan. \n\nHalkaas ayay sheeko rasmi ah ka bilaabatay, waxayna ogaadeen inay wadaagaan dano badan oo dhinaca nolosha ah. Ayagoo wada fadhiya makhaayad ay kafeega ka cabayeen, ayay isku yiraahdeen:\n\nCumar: 'Haddii uusan tareenku maanta haysan lahayn cilad, laga yaabaa inaan weli iska eegi lahayn meel fog.'\nFardowsa: 'Malaha ma ahayn cilad tareen, waxay ahayd qaddarka oo na rabay inaan ugu dambeyn wada hadalno.' \n\nKulankaas wuxuu noqod bilowgii safar nololeed oo endeer, maantana safarkooda tareenka subax kasta ma aha mid cidlo ah, ee waa mid ay gacmaha is haystaan iyagoo qorshaynaya mustaqbalkooda."
+            }
+        };
+
         // Marka boggu baxo (Load)
         document.addEventListener("DOMContentLoaded", () => {
             // Dark Mode check
             if (localStorage.getItem("theme") === "dark") {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 document.querySelector('.dark-mode-btn').innerText = "☀️ Light Mode";
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                document.querySelector('.dark-mode-btn').innerText = "🌙 Dark Mode";
             }
 
-            // Favourites check
-            const favs = JSON.parse(localStorage.getItem("favorites")) || [];
-            const favButtons = document.querySelectorAll('.fav-btn');
-            
-            favButtons.forEach(btn => {
-                const qisoId = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
-                if (favs.includes(qisoId)) {
-                    btn.classList.add('active');
-                }
-            });
+            // Soo rarista Qisada
+            const urlParams = new URLSearchParams(window.location.search);
+            const qisoId = urlParams.get('id');
+
+            if (qisoId && database[qisoId]) {
+                document.getElementById('qisoTitle').innerText = database[qisoId].title;
+                document.getElementById('qisoBody').innerText = database[qisoId].content;
+                document.title = database[qisoId].title + " - QISOOYIN";
+                
+                // Soo rar sawirka oo muuji
+                const banner = document.getElementById('qisoBanner');
+                banner.src = database[qisoId].image;
+                banner.style.display = "block";
+            } else {
+                document.getElementById('qisoTitle').innerText = "Qisada lama helin!";
+                document.getElementById('qisoBody').innerText = "Waan ka xunnahay, qisadan laguma hayo diiwaanka.";
+            }
         });
 
-        // Shaqa bixinta Dark Mode
+        // Dark Mode toggle
         function toggleDarkMode() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             if (currentTheme === 'dark') {
@@ -277,36 +228,6 @@
                 document.querySelector('.dark-mode-btn').innerText = "☀️ Light Mode";
                 localStorage.setItem("theme", "dark");
             }
-        }
-
-        // Shaqa bixinta Raadinta (Search)
-        function searchStories() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.getElementsByClassName('qiso-card');
-
-            for (let i = 0; i < cards.length; i++) {
-                let title = cards[i].getAttribute('data-title').toLowerCase();
-                if (title.includes(input)) {
-                    cards[i].style.display = "";
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
-        }
-
-        // Favourites (Ku darista iyo Kaydinta)
-        function toggleFav(qisoId, btn) {
-            let favs = JSON.parse(localStorage.getItem("favorites")) || [];
-
-            if (favs.includes(qisoId)) {
-                favs = favs.filter(id => id !== qisoId);
-                btn.classList.remove('active');
-            } else {
-                favs.push(qisoId);
-                btn.classList.add('active');
-            }
-
-            localStorage.setItem("favorites", JSON.stringify(favs));
         }
     </script>
 
