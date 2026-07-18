@@ -236,6 +236,39 @@
                 </div>
             </div>
 
+            <!-- QISADA CUSUB 1AAD: Nuurkii Indhaheyga (Aragtida Gabadha) -->
+            <div class="qiso-card" data-title="Nuurkii Indhaheyga" data-id="nuurkii-indhaheyga">
+                <button class="fav-btn" onclick="toggleFav('nuurkii-indhaheyga', this)">♥</button>
+                <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80" alt="Nuurkii Indhaheyga" class="qiso-img">
+                <div class="qiso-card-content">
+                    <h3>Nuurkii Indhaheyga</h3>
+                    <p>Sumaya waxay ahayd gabadh aad u jecel fanka, laakiin dhibaato dhinaca aragga ah ayaa ka hor-istaagi jirtay dunida. Ilaa ay ka baratay Nuur...</p>
+                    <a href="qiso.html?id=nuurkii-indhaheyga" class="read-btn">Akhriso Qisada</a>
+                </div>
+            </div>
+
+            <!-- QISADA CUSUB 2AAD: Qoraalkii Ugu Dambeeyey (Aragtida Wiilka) -->
+            <div class="qiso-card" data-title="Qoraalkii Ugu Dambeeyey" data-id="qoraalkii-ugu-dambeeyey">
+                <button class="fav-btn" onclick="toggleFav('qoraalkii-ugu-dambeeyey', this)">♥</button>
+                <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=600&q=80" alt="Qoraalkii Ugu Dambeeyey" class="qiso-img">
+                <div class="qiso-card-content">
+                    <h3>Qoraalkii Ugu Dambeeyey</h3>
+                    <p>Khaalid wuxuu ahaa wiil xishood badan oo maktabad ka shaqeeya. Wuxuu go'aansaday inuu dareenkiisa Leyla ugu sheego waraaqo buugaagta lagu qariyo...</p>
+                    <a href="qiso.html?id=qoraalkii-ugu-dambeeyey" class="read-btn">Akhriso Qisada</a>
+                </div>
+            </div>
+
+            <!-- QISADA CUSUB 3AAD: Jidka Tareenka iyo Kulankii Qaddarka (Wada Jir) -->
+            <div class="qiso-card" data-title="Jidka Tareenka iyo Kulankii Qaddarka" data-id="jidka-tareenka-iyo-kulankii-qaddarka">
+                <button class="fav-btn" onclick="toggleFav('jidka-tareenka-iyo-kulankii-qaddarka', this)">♥</button>
+                <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80" alt="Jidka Tareenka iyo Kulankii Qaddarka" class="qiso-img">
+                <div class="qiso-card-content">
+                    <h3>Jidka Tareenka</h3>
+                    <p>Cumar iyo Fardowsa waxay maalin kasta isku arki jireen saldhigga tareenka shaqada subaxdii, ilaa maalin ay cilad tareen wax walba beddeshay...</p>
+                    <a href="qiso.html?id=jidka-tareenka-iyo-kulankii-qaddarka" class="read-btn">Akhriso Qisada</a>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -258,9 +291,12 @@
             const favButtons = document.querySelectorAll('.fav-btn');
             
             favButtons.forEach(btn => {
-                const qisoId = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
-                if (favs.includes(qisoId)) {
-                    btn.classList.add('active');
+                const onclickAttr = btn.getAttribute('onclick');
+                if (onclickAttr) {
+                    const match = onclickAttr.match(/'([^']+)'/);
+                    if (match && favs.includes(match[1])) {
+                        btn.classList.add('active');
+                    }
                 }
             });
         });
