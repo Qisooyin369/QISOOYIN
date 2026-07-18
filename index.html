@@ -103,128 +103,6 @@
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
         }
-<!DOCTYPE html>
-<html lang="so">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ku Shub Qisooyin</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a; /* Midab madow ah oo degan */
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-            margin: 0;
-        }
-
-        h1 {
-            color: #00adb5; /* Midabka qoraalka sare */
-        }
-
-        /* Koontaynarka ay qisooyinku ku dhex dhacayaan */
-        #liiska-qisooyinka {
-            width: 100%;
-            max-width: 500px;
-            margin-top: 20px;
-        }
-
-        /* Naqshadda kaadhka qisada kasta */
-        .qiso-card {
-            background-color: #2a2a2a;
-            border-left: 5px solid #00adb5; /* Xariiq qurxoon oo dhinaca ah */
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            animation: sooBax 0.4s ease; /* Saameyn marka ay soo dhacayso */
-        }
-
-        /* Badhanka weyn ee wax lagu shubayo */
-        .badhan-guji {
-            background-color: #00adb5;
-            color: white;
-            font-size: 32px;
-            font-weight: bold;
-            border: none;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 173, 181, 0.4);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .badhan-guji:hover {
-            background-color: #008c95;
-            transform: scale(1.1) rotate(90deg); /* Wuu yara weynaanayaa, wuuna wareegayaa */
-        }
-
-        .badhan-guji:active {
-            transform: scale(0.95);
-        }
-
-        /* Animation-ka qisada marka la soo daro */
-        @keyframes sooBax {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Kaydka Qisooyinka</h1>
-    <p>Guji badhanka hoose si aad qiso cusub ugu shubto liiska:</p>
-
-    <!-- Badhanka diyaarsan -->
-    <button class="badhan-guji" onclick="shubQiso()">+</button>
-
-    <!-- Halkan ayay qisooyinku ku shubmayaan -->
-    <div id="liiska-qisooyinka"></div>
-
-    <script>
-        // Liiska qisooyinka diyaarka ah ee la iska daba shubayo
-        const kaydkaQisooyinka = [
-            "Qiso 1-aad: Dulqaadkii iyo guushii reer miyiga.",
-            "Qiso 2-aad: Saaxiibtinimadii dhabta ahayd ee labadii nin.",
-            "Qiso 3-aad: Caqligii garyqaanka iyo go'aankii yaabka lahaa.",
-            "Qiso 4-aad: Wiilkii dhalinyarada ahaa iyo barashadii nolosha.",
-            "Qiso 5-aad: Ganacsadihii aaminka ahaa iyo barakadii maalkiisa."
-        ];
-
-        let index = 0;
-
-        function shubQiso() {
-            // Haddii qisooyinkii kaydka ahaa dhamaadaan, dib ha uga bilaabo
-            if (index >= kaydkaQisooyinka.length) {
-                alert("Dhammaan qisooyinkii kaydka waa la shubay sxb!");
-                return;
-            }
-
-            // 1. Hel koontaynarka liiska
-            const liiska = document.getElementById("liiska-qisooyinka");
-
-            // 2. Samee dhar (Element) cusub oo qisada lagu dhex rigo
-            const kaadhkaCusub = document.createElement("div");
-            kaadhkaCusub.classList.add("qiso-card");
-            kaadhkaCusub.innerText = kaydkaQisooyinka[index];
-
-            // 3. Ku dar boga dhexdiisa
-            liiska.appendChild(kaadhkaCusub);
-
-            // 4. U gudub qisada xigta
-            index++;
-        }
-    </script>
-
-</body>
-</html>
 
         .qiso-card {
             background-color: var(--card-bg);
@@ -358,39 +236,6 @@
                 </div>
             </div>
 
-            <!-- QISADA CUSUB 1AAD: Nuurkii Indhaheyga (Aragtida Gabadha) -->
-            <div class="qiso-card" data-title="Nuurkii Indhaheyga" data-id="nuurkii-indhaheyga">
-                <button class="fav-btn" onclick="toggleFav('nuurkii-indhaheyga', this)">♥</button>
-                <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80" alt="Nuurkii Indhaheyga" class="qiso-img">
-                <div class="qiso-card-content">
-                    <h3>Nuurkii Indhaheyga</h3>
-                    <p>Sumaya waxay ahayd gabadh aad u jecel fanka, laakiin dhibaato dhinaca aragga ah ayaa ka hor-istaagi jirtay dunida. Ilaa ay ka baratay Nuur...</p>
-                    <a href="qiso.html?id=nuurkii-indhaheyga" class="read-btn">Akhriso Qisada</a>
-                </div>
-            </div>
-
-            <!-- QISADA CUSUB 2AAD: Qoraalkii Ugu Dambeeyey (Aragtida Wiilka) -->
-            <div class="qiso-card" data-title="Qoraalkii Ugu Dambeeyey" data-id="qoraalkii-ugu-dambeeyey">
-                <button class="fav-btn" onclick="toggleFav('qoraalkii-ugu-dambeeyey', this)">♥</button>
-                <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=600&q=80" alt="Qoraalkii Ugu Dambeeyey" class="qiso-img">
-                <div class="qiso-card-content">
-                    <h3>Qoraalkii Ugu Dambeeyey</h3>
-                    <p>Khaalid wuxuu ahaa wiil xishood badan oo maktabad ka shaqeeya. Wuxuu go'aansaday inuu dareenkiisa Leyla ugu sheego waraaqo buugaagta lagu qariyo...</p>
-                    <a href="qiso.html?id=qoraalkii-ugu-dambeeyey" class="read-btn">Akhriso Qisada</a>
-                </div>
-            </div>
-
-            <!-- QISADA CUSUB 3AAD: Jidka Tareenka iyo Kulankii Qaddarka (Wada Jir) -->
-            <div class="qiso-card" data-title="Jidka Tareenka iyo Kulankii Qaddarka" data-id="jidka-tareenka-iyo-kulankii-qaddarka">
-                <button class="fav-btn" onclick="toggleFav('jidka-tareenka-iyo-kulankii-qaddarka', this)">♥</button>
-                <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80" alt="Jidka Tareenka iyo Kulankii Qaddarka" class="qiso-img">
-                <div class="qiso-card-content">
-                    <h3>Jidka Tareenka</h3>
-                    <p>Cumar iyo Fardowsa waxay maalin kasta isku arki jireen saldhigga tareenka shaqada subaxdii, ilaa maalin ay cilad tareen wax walba beddeshay...</p>
-                    <a href="qiso.html?id=jidka-tareenka-iyo-kulankii-qaddarka" class="read-btn">Akhriso Qisada</a>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -413,12 +258,9 @@
             const favButtons = document.querySelectorAll('.fav-btn');
             
             favButtons.forEach(btn => {
-                const onclickAttr = btn.getAttribute('onclick');
-                if (onclickAttr) {
-                    const match = onclickAttr.match(/'([^']+)'/);
-                    if (match && favs.includes(match[1])) {
-                        btn.classList.add('active');
-                    }
+                const qisoId = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
+                if (favs.includes(qisoId)) {
+                    btn.classList.add('active');
                 }
             });
         });
