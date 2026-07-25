@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="so">
 <head>
@@ -15,7 +14,7 @@
             --header-text: #ffffff;
             --footer-bg: #2c3e50;
             --footer-text: #bdc3c7;
-        }
+        } 
 
         [data-theme="dark"] {
             --bg-color: #1a1a1a;
@@ -26,7 +25,7 @@
             --header-text: #ffffff;
             --footer-bg: #111111;
             --footer-text: #888888;
-        }
+        } 
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -38,21 +37,21 @@
             flex-direction: column;
             min-height: 100vh;
             transition: background 0.3s, color 0.3s;
-        }
+        } 
 
         header {
             background-color: var(--header-bg);
             color: var(--header-text);
-            padding: 25px 20px; /* Waa la weyneeyey */
+            padding: 25px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
+        } 
 
         header h1 {
             margin: 0;
-            font-size: 32px; /* Waa la weyneeyey */
-        }
+            font-size: 32px;
+        } 
 
         .back-btn, .dark-mode-btn {
             background: none;
@@ -65,54 +64,52 @@
             text-decoration: none;
             font-size: 14px;
             transition: 0.3s;
-        }
+        } 
 
         .back-btn:hover, .dark-mode-btn:hover {
             background-color: var(--primary-color);
             color: white;
-        }
+        } 
 
         .container {
             max-width: 800px;
             margin: 40px auto;
             padding: 0 20px;
             flex: 1;
-        }
+        } 
 
         .qiso-full-card {
             background-color: var(--card-bg);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
+        } 
 
-        /* Sawirka weyn ee gudaha qisada */
         .qiso-banner-img {
             width: 100%;
             height: 300px;
             object-fit: cover;
-        }
+        } 
 
         .qiso-full-card-content {
             padding: 40px;
-        }
+        } 
 
         .qiso-full-card h2 {
             color: var(--primary-color);
             margin-top: 0;
-            font-size: 36px; /* Aad baa loo weyneeyey cinwaanka gudaha (wuxuu ahaa 28px) */
+            font-size: 36px;
             border-bottom: 2px solid #eee;
             padding-bottom: 15px;
-        }
+        } 
 
         .qiso-content {
-            font-size: 19px; /* Qoraalka sheekada laftiisa wax yar baa la weyneeyey si uu indhaha u uroon yahay */
+            font-size: 19px;
             line-height: 1.8;
             margin-top: 20px;
             white-space: pre-line;
-        }
+        } 
 
-        /* Naqshadda Footer-ka */
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
@@ -124,17 +121,16 @@
         }
     </style>
 </head>
-<body>
+<body> 
 
     <header>
         <a href="index.html" class="back-btn">⬅ Dib u laabo</a>
         <h1>📖 QISOOYIN</h1>
         <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-    </header>
+    </header> 
 
     <div class="container">
         <div class="qiso-full-card">
-            <!-- Sawirka weyn ee sare ka soo muuqanaya -->
             <img id="qisoBanner" src="" alt="Qiso Banner" class="qiso-banner-img" style="display: none;">
             
             <div class="qiso-full-card-content">
@@ -144,15 +140,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 
-    <!-- FOOTER-KA CUSUB -->
     <footer>
-        @2026 QISOOYIN - Xuquuqda wey dhowran tahay
-    </footer>
+        &copy; <span id="year"></span> QISOOYIN - Xuquuqda wey dhowran tahay
+    </footer> 
 
     <script>
-        // Qisooyinka kaydsan (oo hadda wata sawirradii)
         const database = {
             "samirka-iyo-guusha": {
                 title: "Samirka iyo Guusha",
@@ -182,12 +176,14 @@
             "jidka-tareenka-iyo-kulankii-qaddarka": {
                 title: "Jidka Tareenka iyo Kulankii Qaddarka (Wada Jir)",
                 image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=800&q=80",
-                content: "Cumar iyo Fardowsa waxay ahaayeen laba qof oo maalin kasta ku kulmi jiray saldhigga tareenka xilliga subaxdii marka loo socdo shaqada. Waxay isku weydaarsan jireen kaliya dhoola-caddayn iyo salaan kooban muddo ku dhow sannad, laakiin midkoodna kuma dhiiran jirin inuu tallaabo kale qaado. Maalin maalmaha ka mid ah, tareenkii ayaa cilad ku timid, waxaana lagu khasbay inay bas wada raacaan. \n\nHalkaas ayay sheeko rasmi ah ka bilaabatay, waxayna ogaadeen inay wadaagaan dano badan oo dhinaca nolosha ah. Ayagoo wada fadhiya makhaayad ay kafeega ka cabayeen, ayay isku yiraahdeen:\n\nCumar: 'Haddii uusan tareenku maanta haysan lahayn cilad, laga yaabaa inaan weli iska eegi lahayn meel fog.'\nFardowsa: 'Malaha ma ahayn cilad tareen, waxay ahayd qaddarka oo na rabay inaan ugu dambeyn wada hadalno.' \n\nKulankaas wuxuu noqod bilowgii safar nololeed oo dheer, maantana safarkooda tareenka subax kasta ma aha mid cidlo ah, ee waa mid ay gacmaha is haystaan iyagoo qorshaynaya mustaqbalkooda \n\nCumar iyo Fardowsa waa ay is guursadeen, waxayna isku dhaleen toban caruur ah, shan wiil iyo shan gabdhood. \n\nCumar iyo Farowsa waxay wada qaateen nolol farxad leh."
+                content: "Cumar iyo Fardowsa waxay ahaayeen laba qof oo maalin kasta ku kulmi jiray saldhigga tareenka xilliga subaxdii marka loo socdo shaqada. Waxay isku weydaarsan jireen kaliya dhoola-caddayn iyo salaan kooban muddo ku dhow sannad, laakiin midkoodna kuma dhiiran jirin inuu tallaabo kale qaado. Maalin maalmaha ka mid ah, tareenkii ayaa cilad ku timid, waxaana lagu khasbay inay bas wada raacaan. \n\nHalkaas ayay sheeko rasmi ah ka bilaabatay, waxayna ogaadeen inay wadaagaan dano badan oo dhinaca nolosha ah. Ayagoo wada fadhiya makhaayad ay kafeega ka cabayeen, ayay isku yiraahdeen:\n\nCumar: 'Haddii uusan tareenku maanta haysan lahayn cilad, laga yaabaa inaan weli iska eegi lahayn meel fog.'\nFardowsa: 'Malaha ma ahayn cilad tareen, waxay ahayd qaddarka oo na rabay inaan ugu dambeyn wada heldno.' \n\nKulankaas wuxuu noqod bilowgii safar nololeed oo dheer, maantana safarkooda tareenka subax kasta ma aha mid cidlo ah, ee waa mid ay gacmaha is haystaan iyagoo qorshaynaya mustaqbalkooda \n\nCumar iyo Fardowsa waa ay is guursadeen, waxayna isku dhaleen toban caruur ah, shan wiil iyo shan gabdhood. \n\nCumar iyo Farowsa waxay wada qaateen nolol farxad leh."
             }
-        };
+        }; 
 
-        // Marka boggu baxo (Load)
         document.addEventListener("DOMContentLoaded", () => {
+            // Sanadka otomaatigga ah ee Footer
+            document.getElementById("year").innerText = new Date().getFullYear();
+
             // Dark Mode check
             if (localStorage.getItem("theme") === "dark") {
                 document.documentElement.setAttribute('data-theme', 'dark');
@@ -195,18 +191,17 @@
             } else {
                 document.documentElement.removeAttribute('data-theme');
                 document.querySelector('.dark-mode-btn').innerText = "🌙 Dark Mode";
-            }
+            } 
 
             // Soo rarista Qisada
             const urlParams = new URLSearchParams(window.location.search);
-            const qisoId = urlParams.get('id');
+            const qisoId = urlParams.get('id'); 
 
             if (qisoId && database[qisoId]) {
                 document.getElementById('qisoTitle').innerText = database[qisoId].title;
                 document.getElementById('qisoBody').innerText = database[qisoId].content;
                 document.title = database[qisoId].title + " - QISOOYIN";
                 
-                // Soo rar sawirka oo muuji
                 const banner = document.getElementById('qisoBanner');
                 banner.src = database[qisoId].image;
                 banner.style.display = "block";
@@ -214,9 +209,8 @@
                 document.getElementById('qisoTitle').innerText = "Qisada lama helin!";
                 document.getElementById('qisoBody').innerText = "Waan ka xunnahay, qisadan laguma hayo diiwaanka.";
             }
-        });
+        }); 
 
-        // Dark Mode toggle
         function toggleDarkMode() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             if (currentTheme === 'dark') {
@@ -229,7 +223,6 @@
                 localStorage.setItem("theme", "dark");
             }
         }
-    </script>
-
+    </script> 
 </body>
 </html>
