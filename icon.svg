@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2c3e50" />
+      <stop offset="100%" stop-color="#1a252f" />
+    </linearGradient>
+
+    <!-- Sun & Rays Gradient -->
+    <linearGradient id="sun-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f1c40f" />
+      <stop offset="100%" stop-color="#e67e22" />
+    </linearGradient>
+
+    <!-- Book Cover Gradient -->
+    <linearGradient id="book-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2ecc71" />
+      <stop offset="100%" stop-color="#27ae60" />
+    </linearGradient>
+  </defs>
+
+  <!-- Base Badge / Canvas Background -->
+  <rect width="512" height="512" rx="110" fill="url(#bg-grad)" />
+
+  <!-- 1. QORRAXDA IFEYSA (RISING SUN & RAYS) -->
+  <g transform="translate(256, 175)">
+    <!-- Sun Core -->
+    <circle cx="0" cy="0" r="45" fill="url(#sun-grad)" />
+
+    <!-- Sun Rays (Ilaysta Qorraxda) -->
+    <g stroke="url(#sun-grad)" stroke-width="6" stroke-linecap="round">
+      <line x1="0" y1="-65" x2="0" y2="-52" />
+      <line x1="46" y1="-46" x2="37" y2="-37" />
+      <line x1="65" y1="0" x2="52" y2="0" />
+      <line x1="-46" y1="-46" x2="-37" y2="-37" />
+      <line x1="-65" y1="0" x2="-52" y2="0" />
+      <line x1="32" y1="-55" x2="25" y2="-43" />
+      <line x1="-32" y1="-55" x2="-25" y2="-43" />
+      <line x1="55" y1="-32" x2="43" y2="-25" />
+      <line x1="-55" y1="-32" x2="-43" y2="-25" />
+    </g>
+  </g>
+
+  <!-- 2. BUUGGA FURA (OPEN BOOK STRUCTURE) -->
+  <!-- Back / Cover Shadows -->
+  <path d="M 100 280 C 160 265, 230 285, 256 300 C 282 285, 352 265, 412 280 L 412 400 C 352 385, 282 400, 256 415 C 230 400, 160 385, 100 400 Z" fill="url(#book-grad)" />
+
+  <!-- Inner Pages (White) -->
+  <path d="M 110 270 C 165 258, 225 275, 248 288 L 248 392 C 225 378, 165 362, 110 375 Z" fill="#ffffff" opacity="0.95" />
+  <path d="M 402 270 C 347 258, 287 275, 264 288 L 264 392 C 287 378, 347 362, 402 375 Z" fill="#ffffff" stroke="#f0f0f0" stroke-width="1" />
+
+  <!-- Book Center Crease -->
+  <line x1="256" y1="295" x2="256" y2="408" stroke="#1a252f" stroke-width="3" opacity="0.3" />
+
+  <!-- 3. QORAALKA "QISOOYIN" EE BUUGGA DUL MUGGA KU LEH -->
+  <text x="256" y="348" 
+        font-family="'Segoe UI', Arial, sans-serif" 
+        font-size="34" 
+        font-weight="900" 
+        fill="#2c3e50" 
+        text-anchor="middle" 
+        letter-spacing="4">
+    QISOOYIN
+  </text>
+  
+  <!-- Line Accents Under Text -->
+  <path d="M 175 362 Q 256 372 337 362" stroke="#2ecc71" stroke-width="3" fill="none" stroke-linecap="round" />
+</svg>
