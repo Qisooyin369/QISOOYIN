@@ -1,9 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="so">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qisada - QISOOYIN</title>
+    
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2ecc71">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3845/3845868.png">
+
     <style>
         :root {
             --bg-color: #f4f7f6;
@@ -181,10 +188,8 @@
         }; 
 
         document.addEventListener("DOMContentLoaded", () => {
-            // Sanadka otomaatigga ah ee Footer
             document.getElementById("year").innerText = new Date().getFullYear();
 
-            // Dark Mode check
             if (localStorage.getItem("theme") === "dark") {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 document.querySelector('.dark-mode-btn').innerText = "☀️ Light Mode";
@@ -193,7 +198,6 @@
                 document.querySelector('.dark-mode-btn').innerText = "🌙 Dark Mode";
             } 
 
-            // Soo rarista Qisada
             const urlParams = new URLSearchParams(window.location.search);
             const qisoId = urlParams.get('id'); 
 
@@ -222,6 +226,15 @@
                 document.querySelector('.dark-mode-btn').innerText = "☀️ Light Mode";
                 localStorage.setItem("theme", "dark");
             }
+        }
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker Registered'))
+                    .catch(err => console.log('Service Worker Error: ', err));
+            });
         }
     </script> 
 </body>
