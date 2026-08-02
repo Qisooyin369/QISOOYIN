@@ -4,40 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QISOOYIN - Bogga Hore</title>
-    
-    <!-- PWA Settings -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2ecc71">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3845/3845868.png">
-
+    <title>QISOOYIN - Dunida Qisooyinka Casriga ah</title>
     <style>
+        /* CSS iyo Naqshadda Bogga */
         :root {
             --bg-color: #f4f7f6;
-            --text-color: #2c3e50;
+            --text-color: #333;
             --card-bg: #ffffff;
             --primary-color: #2ecc71;
             --header-bg: #2c3e50;
             --header-text: #ffffff;
             --footer-bg: #2c3e50;
             --footer-text: #bdc3c7;
-            --border-color: #e2e8f0;
-        } 
+        }
 
         [data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --card-bg: #1e1e1e;
+            --bg-color: #1a1a1a;
+            --text-color: #f4f7f6;
+            --card-bg: #2d2d2d;
             --primary-color: #2ecc71;
-            --header-bg: #0d0d0d;
+            --header-bg: #111111;
             --header-text: #ffffff;
-            --footer-bg: #0d0d0d;
+            --footer-bg: #111111;
             --footer-text: #888888;
-            --border-color: #333333;
-        } 
+        }
 
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -45,291 +38,314 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            transition: background-color 0.3s, color 0.3s;
-        } 
+            transition: background 0.3s, color 0.3s;
+        }
 
         header {
             background-color: var(--header-bg);
             color: var(--header-text);
-            padding: 20px;
+            padding: 25px 20px; /* Wax yar waa la weyneeyey */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        } 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
         header h1 {
             margin: 0;
-            font-size: 24px;
-        } 
+            font-size: 32px; /* Cinwaanka weyn waa la weyneeyey (wuxuu ahaa 24px) */
+        }
 
         .dark-mode-btn {
-            background: transparent;
+            background: none;
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 8px 16px;
+            padding: 10px 20px;
             cursor: pointer;
             border-radius: 20px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.2s;
-        } 
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
         .dark-mode-btn:hover {
             background-color: var(--primary-color);
             color: white;
-        } 
+        }
 
         .container {
-            max-width: 1100px;
-            width: 100%;
+            max-width: 1000px;
             margin: 30px auto;
             padding: 0 20px;
-            box-sizing: border-box;
-            flex: 1;
-        } 
-
-        .search-box {
-            margin-bottom: 30px;
-            text-align: center;
+            flex: 1; /* Tani waxay hubineysaa in footer-ku mar walba hoos joogo */
         }
 
-        .search-box input {
-            width: 100%;
-            max-width: 500px;
-            padding: 12px 20px;
-            border-radius: 25px;
-            border: 2px solid var(--border-color);
+        /* Sanduuqa Raadinta */
+        .search-container {
+            margin-bottom: 35px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 18px;
+            outline: none;
             background-color: var(--card-bg);
             color: var(--text-color);
-            font-size: 16px;
-            outline: none;
-            transition: border-color 0.3s;
         }
 
-        .search-box input:focus {
-            border-color: var(--primary-color);
-        }
-
-        /* Grid for Cards */
+        /* Qaybta Qisooyinka (Cards) */
         .qiso-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
-        } 
+        }
 
         .qiso-card {
             background-color: var(--card-bg);
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
-        } 
+            overflow: hidden; /* Si sawirku geesaha ugu wareego */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+            position: relative;
+        }
 
         .qiso-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
-        .qiso-card img {
+        /* Naqshadda Sawirka Qisada */
+        .qiso-img {
             width: 100%;
             height: 180px;
-            object-fit: cover;
-        } 
+            object-fit: cover; /* Si uu sawirku si fiican ugu fariisto */
+        }
 
         .qiso-card-content {
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        } 
-
-        .qiso-card h3 {
-            margin: 0 0 10px 0;
-            color: var(--primary-color);
-            font-size: 20px;
-        } 
-
-        .qiso-card p {
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--text-color);
-            opacity: 0.8;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        } 
-
-        .read-more {
-            margin-top: 15px;
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 14px;
-            display: inline-block;
         }
 
+        .qiso-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-size: 24px; /* Waa la weyneeyey cinwaanka qisada (wuxuu ahaa 18-20px) */
+        }
+
+        .qiso-card p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .read-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .fav-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.8); /* Background cad oo hufan si uu sawirka dushiisa uga muuqdo */
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #bbb;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .fav-btn.active {
+            color: #e74c3c;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Naqshadda Footer-ka */
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
             text-align: center;
             padding: 20px;
-            font-size: 14px;
+            font-size: 16px;
             margin-top: 40px;
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
     </style>
 </head>
-<body> 
+<body>
 
     <header>
         <h1>📖 QISOOYIN</h1>
-        <button class="dark-mode-btn" id="themeToggleBtn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-    </header> 
+        <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </header>
 
-    <main class="container">
-        <!-- Search Field -->
-        <div class="search-box">
-            <input type="text" id="searchInput" onkeyup="filterStories()" placeholder="Ka raadso qiso halkan...">
+    <div class="container">
+        <!-- Sanduuqa Raadinta -->
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Raadi qisooyin dhiirigelin ah..." onkeyup="searchStories()">
         </div>
 
-        <!-- Cards Container -->
+        <!-- Liiska Qisooyinka -->
         <div class="qiso-grid" id="qisoGrid">
             
-            <!-- Qiso 1 -->
-            <a href="qiso.html?id=samirka-iyo-guusha" class="qiso-card">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Samirka iyo Guusha">
+            <!-- Qisada 1aad (Samirka iyo Guusha) -->
+            <div class="qiso-card" data-title="Samirka iyo Guusha" data-id="samirka-iyo-guusha">
+                <button class="fav-btn" onclick="toggleFav('samirka-iyo-guusha', this)">♥</button>
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Samirka iyo Guusha" class="qiso-img">
                 <div class="qiso-card-content">
                     <h3>Samirka iyo Guusha</h3>
-                    <p>Waqti hore, waxaa jiray nin dhalinyaro ah oo rabay inuu hanti yeesho, laakiin dhibaatooyin badan ayaa ka hor yimid...</p>
-                    <span class="read-more">Akhriso Qisada ➔</span>
+                    <p>Kani waa bilowga qiso dhiirigelin leh oo ka hadlaysa muhiimadda samirka u leeyahay nolosha aadanaha...</p>
+                    <a href="qiso.html?id=samirka-iyo-guusha" class="read-btn">Akhriso Qisada</a>
                 </div>
-            </a>
+            </div>
 
-            <!-- Qiso 2 -->
-            <a href="qiso.html?id=dhabada-toosan" class="qiso-card">
-                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="Dhabada Toosan">
+            <!-- Qisada 2aad (Dhabada Toosan) -->
+            <div class="qiso-card" data-title="Dhabada Toosan" data-id="dhabada-toosan">
+                <button class="fav-btn" onclick="toggleFav('dhabada-toosan', this)">♥</button>
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80" alt="Dhabada Toosan" class="qiso-img">
                 <div class="qiso-card-content">
                     <h3>Dhabada Toosan</h3>
-                    <p>Daacadnimadu waa dhabada ka kaliya ee qofka u horseedda xasillooni maskaxeed iyo guul waarta...</p>
-                    <span class="read-more">Akhriso Qisada ➔</span>
+                    <p>Qisadan waxay ku tusineysaa sida daacadnimada iyo raadinta dhabada toosan ay qofka u gaarsiiso guul...</p>
+                    <a href="qiso.html?id=dhabada-toosan" class="read-btn">Akhriso Qisada</a>
                 </div>
-            </a>
+            </div>
 
-            <!-- Qiso 3 -->
-            <a href="qiso.html?id=aamina-iyo-riyadeeda" class="qiso-card">
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80" alt="Aamina iyo Riyadeeda">
+            <!-- Qisada 3aad (Aamina iyo Riyadeeda) -->
+            <div class="qiso-card" data-title="Aamina iyo Riyadeeda" data-id="aamina-iyo-riyadeeda">
+                <button class="fav-btn" onclick="toggleFav('aamina-iyo-riyadeeda', this)">♥</button>
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Aamina iyo Riyadeeda" class="qiso-img">
                 <div class="qiso-card-content">
                     <h3>Aamina iyo Riyadeeda</h3>
-                    <p>Aamina waxay ahayd gabadh dhalinyaro ah oo ku nool miyiga, waxayna aad u jeclayd inay noqoto dhakhtarad...</p>
-                    <span class="read-more">Akhriso Qisada ➔</span>
+                    <p>Qisadani waxay ku saabsan tahay gabadh yar oo hami sare leh, taas oo ku guulaysatay inay dhib kasta ka gudubto...</p>
+                    <a href="qiso.html?id=aamina-iyo-riyadeeda" class="read-btn">Akhriso Qisada</a>
                 </div>
-            </a>
+            </div>
 
-            <!-- Qiso 4 -->
-            <a href="qiso.html?id=nuurkii-indhaheyga" class="qiso-card">
-                <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80" alt="Nuurkii Indhaheyga">
+            <!-- QISADA CUSUB 1AAD: Nuurkii Indhaheyga (Aragtida Gabadha) -->
+            <div class="qiso-card" data-title="Nuurkii Indhaheyga" data-id="nuurkii-indhaheyga">
+                <button class="fav-btn" onclick="toggleFav('nuurkii-indhaheyga', this)">♥</button>
+                <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80" alt="Nuurkii Indhaheyga" class="qiso-img">
                 <div class="qiso-card-content">
                     <h3>Nuurkii Indhaheyga</h3>
-                    <p>Sumaya waxay ahayd gabadh aad u jecel sawirista iyo fanka, laakiin dhibaato dhinaca aragga ah ayaa ku dhalatay...</p>
-                    <span class="read-more">Akhriso Qisada ➔</span>
+                    <p>Sumaya waxay ahayd gabadh aad u jecel fanka, laakiin dhibaato dhinaca aragga ah ayaa ka hor-istaagi jirtay dunida. Ilaa ay ka baratay Nuur...</p>
+                    <a href="qiso.html?id=nuurkii-indhaheyga" class="read-btn">Akhriso Qisada</a>
                 </div>
-            </a>
+            </div>
 
-            <!-- Qiso 5 -->
-            <a href="qiso.html?id=qoraalkii-ugu-dambeeyey" class="qiso-card">
-                <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=800&q=80" alt="Qoraalkii Ugu Dambeeyey">
+            <!-- QISADA CUSUB 2AAD: Qoraalkii Ugu Dambeeyey (Aragtida Wiilka) -->
+            <div class="qiso-card" data-title="Qoraalkii Ugu Dambeeyey" data-id="qoraalkii-ugu-dambeeyey">
+                <button class="fav-btn" onclick="toggleFav('qoraalkii-ugu-dambeeyey', this)">♥</button>
+                <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=600&q=80" alt="Qoraalkii Ugu Dambeeyey" class="qiso-img">
                 <div class="qiso-card-content">
                     <h3>Qoraalkii Ugu Dambeeyey</h3>
-                    <p>Khaalid wuxuu ahaa wiil dabeecad deggan oo ka shaqeeya maktabad weyn. Maalin kasta wuxuu arki jiray Leyla...</p>
-                    <span class="read-more">Akhriso Qisada ➔</span>
+                    <p>Khaalid wuxuu ahaa wiil xishood badan oo maktabad ka shaqeeya. Wuxuu go'aansaday inuu dareenkiisa Leyla ugu sheego waraaqo buugaagta lagu qariyo...</p>
+                    <a href="qiso.html?id=qoraalkii-ugu-dambeeyey" class="read-btn">Akhriso Qisada</a>
                 </div>
-            </a>
+            </div>
 
-            <!-- Qiso 6 -->
-            <a href="qiso.html?id=jidka-tareenka-iyo-kulankii-qaddarka" class="qiso-card">
-                <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=800&q=80" alt="Jidka Tareenka iyo Kulankii Qaddarka">
+            <!-- QISADA CUSUB 3AAD: Jidka Tareenka iyo Kulankii Qaddarka (Wada Jir) -->
+            <div class="qiso-card" data-title="Jidka Tareenka iyo Kulankii Qaddarka" data-id="jidka-tareenka-iyo-kulankii-qaddarka">
+                <button class="fav-btn" onclick="toggleFav('jidka-tareenka-iyo-kulankii-qaddarka', this)">♥</button>
+                <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80" alt="Jidka Tareenka iyo Kulankii Qaddarka" class="qiso-img">
                 <div class="qiso-card-content">
-                    <h3>Jidka Tareenka & Kulankii Qaddarka</h3>
-                    <p>Cumar iyo Fardowsa waxay ahaayeen laba qof oo maalin kasta ku kulmi jiray saldhigga tareenka...</p>
-                    <span class="read-more">Akhriso Qisada ➔</span>
+                    <h3>Jidka Tareenka</h3>
+                    <p>Cumar iyo Fardowsa waxay maalin kasta isku arki jireen saldhigga tareenka shaqada subaxdii, ilaa maalin ay cilad tareen wax walba beddeshay...</p>
+                    <a href="qiso.html?id=jidka-tareenka-iyo-kulankii-qaddarka" class="read-btn">Akhriso Qisada</a>
                 </div>
-            </a>
-
-            <!-- Qiso 7: BOQORKII BARAFKA (Aad ku dartay) -->
-            <a href="qiso.html?id=boqorkii-barafka" class="qiso-card">
-                <img src="https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&w=800&q=80" alt="Boqorkii Barafka">
-                <div class="qiso-card-content">
-                    <h3>Boqorkii Barafka</h3>
-                    <p>Sheeko ka timid Dhaqanka Ruushka. Aabbe ayaa gabadhiisa ku reebay beeraha barafka ah iyadoo ay ku khasbtay xaaskiisa...</p>
-                    <span class="read-more">Akhriso Qisada ➔</span>
-                </div>
-            </a>
+            </div>
 
         </div>
-    </main> 
+    </div>
 
+    <!-- FOOTER-KA CUSUB -->
     <footer>
-        &copy; <span id="year"></span> QISOOYIN - Xuquuqda wey dhowran tahay
-    </footer> 
+        @2026 QISOOYIN - Xuquuqda wey dhowran tahay
+    </footer>
 
     <script>
+        // Marka boggu baxo (Load)
         document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("year").innerText = new Date().getFullYear();
-
-            // Check Saved Dark Mode Theme
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme === "dark" || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            // Dark Mode check
+            if (localStorage.getItem("theme") === "dark") {
                 document.documentElement.setAttribute('data-theme', 'dark');
-                document.getElementById('themeToggleBtn').innerText = "☀️ Light Mode";
+                document.querySelector('.dark-mode-btn').innerText = "☀️ Light Mode";
             }
-        }); 
 
+            // Favourites check
+            const favs = JSON.parse(localStorage.getItem("favorites")) || [];
+            const favButtons = document.querySelectorAll('.fav-btn');
+            
+            favButtons.forEach(btn => {
+                const onclickAttr = btn.getAttribute('onclick');
+                if (onclickAttr) {
+                    const match = onclickAttr.match(/'([^']+)'/);
+                    if (match && favs.includes(match[1])) {
+                        btn.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // Shaqa bixinta Dark Mode
         function toggleDarkMode() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
-            const btn = document.getElementById('themeToggleBtn');
-            
             if (currentTheme === 'dark') {
                 document.documentElement.removeAttribute('data-theme');
-                btn.innerText = "🌙 Dark Mode";
+                document.querySelector('.dark-mode-btn').innerText = "🌙 Dark Mode";
                 localStorage.setItem("theme", "light");
             } else {
                 document.documentElement.setAttribute('data-theme', 'dark');
-                btn.innerText = "☀️ Light Mode";
+                document.querySelector('.dark-mode-btn').innerText = "☀️ Light Mode";
                 localStorage.setItem("theme", "dark");
             }
         }
 
-        // Live Search Filter
-        function filterStories() {
+        // Shaqa bixinta Raadinta (Search)
+        function searchStories() {
             const input = document.getElementById('searchInput').value.toLowerCase();
             const cards = document.getElementsByClassName('qiso-card');
 
             for (let i = 0; i < cards.length; i++) {
-                const title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
-                const text = cards[i].getElementsByTagName('p')[0].innerText.toLowerCase();
-                
-                if (title.includes(input) || text.includes(input)) {
-                    cards[i].style.display = "flex";
+                let title = cards[i].getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    cards[i].style.display = "";
                 } else {
                     cards[i].style.display = "none";
                 }
             }
         }
 
-        // PWA Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker Registered'))
-                    .catch(err => console.error('Service Worker Error: ', err));
-            });
+        // Favourites (Ku darista iyo Kaydinta)
+        function toggleFav(qisoId, btn) {
+            let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+            if (favs.includes(qisoId)) {
+                favs = favs.filter(id => id !== qisoId);
+                btn.classList.remove('active');
+            } else {
+                favs.push(qisoId);
+                btn.classList.add('active');
+            }
+
+            localStorage.setItem("favorites", JSON.stringify(favs));
         }
-    </script> 
+    </script>
+
 </body>
 </html>
+        
