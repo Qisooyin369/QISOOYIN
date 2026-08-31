@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App-ka Waxbarashada Soomaaliyeed</title>
+    <style>
+        /* Guud ahaan Naqshadda (CSS) */
+        :root {
+            --primary-color: #4189DD; /* Buluug Soomaali */
+            --secondary-color: #FFFFFF; /* Caddaan */
+            --accent-color: #075A9E; /* Buluug madow */
+            --text-color: #333333;
+            --bg-color: #f4f7f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Madaxa (Header) */
+        header {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        /* Navigation-ka */
+        nav {
+            background-color: var(--accent-color);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        nav button:hover, nav button.active {
+            background-color: rgba(255,255,255,0.2);
+            font-weight: bold;
+        }
+
+        /* Qaybaha content-ka */
+        main {
+            flex: 1;
+            padding: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Kaararka Casharrada */
+        .card {
+            background: var(--secondary-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Imtixaanka (Quiz) */
+        .quiz-container {
+            background: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 2px solid var(--primary-color);
+            background: var(--secondary-color);
+            color: var(--text-color);
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .options button:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            nav {
+                flex-wrap: wrap;
+            }
+            nav button {
+                flex: 1 1 50%;
+                font-size: 0.9rem;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>📚 App-ka Waxbarashada</h1>
+        <p>Baro, Baraarug, Horumar</p>
+    </header>
+
+    <nav>
+        <button onclick="showSection('home')" class="active" id="btn-home">Hoyga</button>
+        <button onclick="showSection('lessons')" id="btn-lessons">Casharrada</button>
+        <button onclick="showSection('quiz')" id="btn-quiz">Imtixaán</button>
+        <button onclick="showSection('about')" id="btn-about">Ku Saabsan</button>
+    </nav>
+
+    <main>
+        <!-- Qaybta Hoyga -->
+        <div id="home" class="section active">
+            <div class="card">
+                <h2>Soo Dhawoow! 👋</h2>
+                <p>Ku soo dhawoow App-ka Waxbarashada Soomaaliyeed. App-kan waxaa loogu talagalay in ardayda iyo qof kasta oo doonaya in uu wax barto uu si fudud ugu helo macluumaad asaasi ah.</p>
+                <br>
+                <p><strong>Maxaad baran doontaa?</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Af-Soomaali iyo Qawaaniinta Luqadda</li>
+                    <li>Xisaabta Aasaasiga ah</li>
+                    <li>Sayniska iyo Nolol Maalmeedka</li>
+                </ul>
+                <br>
+                <button onclick="showSection('lessons')" style="padding: 10px 20px; background: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer;">Bilow Waxbarashada</button>
+            </div>
+        </div>
+
+        <!-- Qaybta Casharrada -->
+        <div id="lessons" class="section">
+            <div class="card">
+                <h3>📖 Af-Soomaali</h3>
+                <p>Af-Soomaaligu waa luqadda rasmiga ah ee Soomaaliya. Wuxuu ka mid yahay luqadaha Kushitiga ee qoyska Afafka Aafro-Aasiyatik.</p>
+            </div>
+            <div class="card">
+                <h3>🔢 Xisaabta</h3>
+                <p><strong>Isku geynta:</strong> 5 + 3 = 8<br>
+                <strong>Ka jarista:</strong> 10 - 4 = 6<br>
+                <strong>Isku dhufashada:</strong> 3 x 3 = 9</p>
+            </div>
+            <div class="card">
+                <h3>🌍 Sayniska</h3>
+                <p>Biyo (H2O) wuxuu ka kooban yahay laba atom oo Haydrojiin ah iyo hal atom oo Ogsijiin ah. Biyuhu way muhiim u yihiin noloolaha oo dhan.</p>
+            </div>
+        </div>
+
+        <!-- Qaybta Imtixaanka -->
+        <div id="quiz" class="section">
+            <div class="quiz-container">
+                <h3>📝 Imtixaán Kooban</h3>
+                <p id="question-text" style="margin: 1rem 0; font-size: 1.1rem; font-weight: bold;">Su'aasha 1: Waa maxay caasimadda Soomaaliya?</p>
+                
+                <div class="options" id="options-container">
+                    <!-- Options will be injected by JS -->
+                </div>
+
+                <div id="feedback" class="feedback"></div>
+                
+                <button id="next-btn" onclick="nextQuestion()" style="display: none; margin-top: 1rem; padding: 10px 20px; background: var(--accent-color); color: white; border: none; border-radius: 5px; cursor: pointer;">Su'aasha Xigta</button>
+            </div>
+        </div>
+
+        <!-- Qaybta Ku Saabsan -->
+        <div id="about" class="section">
+            <div class="card">
+                <h3>Ku Saabsan App-kan</h3>
+                <p>App-kan waxaa sameeyay Qwen (AI) si uu u caawiyo bulshada Soomaaliyeed in ay helaan waxbarasho tayo leh oo luqaddooda hooyo ku qoran.</p>
+                <br>
+                <p><strong>Nooca App-ka:</strong> Waxbarasho (Educational)</p>
+                <p><strong>Luuqadda:</strong> Af-Soomaali</p>
+                <p><strong>Sannadka:</strong> 2026</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 App-ka Waxbarashada Soomaaliyeed. Xuquuqda oo dhan way dhowran tahay.</p>
+    </footer>
+
+    <script>
+        // JavaScript Logic
+
+        // 1. Navigation Logic
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            document.getElementById('btn-' + sectionId).classList.add('active');
+        }
+
+        // 2. Quiz Logic
+        const questions = [
+            {
+                question: "Waa maxay caasimadda Soomaaliya?",
+                options: ["Hargeysa", "Muqdisho", "Kismaayo", "Garoowe"],
+                correct: 1 // Index of correct answer (Muqdisho)
+            },
+            {
+                question: "Waa maxay natiijada 7 x 8?",
+                options: ["54", "58", "56", "62"],
+                correct: 2 // 56
+            },
+            {
+                question: "Midabka calanka Soomaaliya waa?",
+                options: ["Cagaar iyo Caddaan", "Buluug iyo Xiddig Caddaan ah", "Cas iyo Madow", "Hurdi iyo Buluug"],
+                correct: 1
+            },
+            {
+                question: "Ereyga 'School' Af-Soomaaliga maxaa loo tarjumaa?",
+                options: ["Isbitaal", "Suug", "Dugsi", "Bakhaar"],
+                correct: 2
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const q = questions[currentQuestionIndex];
+            document.getElementById('question-text').innerText = `Su'aasha ${currentQuestionIndex + 1}: ${q.question}`;
+            
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = ''; // Clear previous options
+
+            q.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.innerText = option;
+                btn.onclick = () => checkAnswer(index);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('feedback').className = 'feedback';
+            document.getElementById('next-btn').style.display = 'none';
+        }
+
+        function checkAnswer(selectedIndex) {
+            const q = questions[currentQuestionIndex];
+            const feedbackEl = document.getElementById('feedback');
+            const optionsContainer = document.getElementById('options-container');
+            
+            // Disable all buttons after selection
+            const buttons = optionsContainer.querySelectorAll('button');
+            buttons.forEach(btn => btn.disabled = true);
+
+            if (selectedIndex === q.correct) {
+                feedbackEl.innerText = "✅ Sax! Jawaabtaada waa sax.";
+                feedbackEl.classList.add('correct');
+                score++;
+            } else {
+                feedbackEl.innerText = `❌ Qalad! Jawaabta saxda ah waa: ${q.options[q.correct]}`;
+                feedbackEl.classList.add('incorrect');
+            }
+            feedbackEl.style.display = 'block';
+
+            // Show next button or finish
+            const nextBtn = document.getElementById('next-btn');
+            if (currentQuestionIndex < questions.length - 1) {
+                nextBtn.innerText = "Su'aasha Xigta";
+                nextBtn.style.display = 'block';
+            } else {
+                nextBtn.innerText = "Arag Natiijada";
+                nextBtn.style.display = 'block';
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            const quizContainer = document.querySelector('.quiz-container');
+            quizContainer.innerHTML = `
+                <h3>🎉 Natiijada Imtixaanka</h3>
+                <p style="font-size: 1.2rem; margin: 1rem 0;">Waxaad ka jawaabtay <strong>${score}</strong> su'aalood oo sax ah out of <strong>${questions.length}</strong>.</p>
+                <p>${score === questions.length ? 'MashaAllah! Waa aqoon aad u wanaagsan.' : 'Hadal iyo dhamaan, waa inaad sii waddaa waxbarashada!'}</p>
+                <button onclick="restartQuiz()" style="margin-top: 1rem; padding: 10px 20px; background: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer;">Ku Celi Imtixaanka</button>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            // Rebuild quiz container HTML (simple reload of the section)
+            document.getElementById('quiz').innerHTML = `
+                <div class="quiz-container">
+                    <h3>📝 Imtixaán Kooban</h3>
+                    <p id="question-text" style="margin: 1rem 0; font-size: 1.1rem; font-weight: bold;"></p>
+                    <div class="options" id="options-container"></div>
+                    <div id="feedback" class="feedback"></div>
+                    <button id="next-btn" onclick="nextQuestion()" style="display: none; margin-top: 1rem; padding: 10px 20px; background: var(--accent-color); color: white; border: none; border-radius: 5px; cursor: pointer;">Su'aasha Xigta</button>
+                </div>
+            `;
+            loadQuestion();
+        }
+
+        // Initialize first question
+        loadQuestion();
+
+    </script>
+</body>
+</html>
